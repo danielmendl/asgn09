@@ -25,16 +25,16 @@ function convertToGallons($value, $fromUnit) {
 function convertFromGallons($value, $toUnit) {
   switch($toUnit) {
     case 'buckets':
-      return $value / 0.25;
+      return $value / 4;
       break;
     case 'butts':
-      return $value / 0.00925925;
+      return $value / 108;
       break;
     case 'firkins':
-      return $value / 0.11111111;
+      return $value / 9;
       break;
     case 'hogsheads':
-      return $value / 0.01851851;
+      return $value / 54;
       break;
     case 'pints':
       return $value * 8;
@@ -46,7 +46,7 @@ function convertFromGallons($value, $toUnit) {
 
 function convertVolume($value, $fromUnit, $toUnit) {
   $gallonValue = convertToGallons($value, $fromUnit);
-  $newValue = convertFromGallons($GallonValue, $toUnit);
+  $newValue = convertFromGallons($gallonValue, $toUnit);
   return $newValue;
 }
 
@@ -98,7 +98,7 @@ if($_POST['submit']) {
         <div class="entry">
           <label>To:</label>&nbsp;
           <input type="text" name="toValue" value="<?php echo $toValue; ?>" />&nbsp;
-          <select name="to_unit">
+          <select name="toUnit">
             <option value="buckets"<?php if($toUnit == 'buckets') { echo " selected"; } ?>>Buckets</option>
             <option value="butts"<?php if($toUnit == 'butts') { echo " selected"; } ?>>Butts</option>
             <option value="firkins"<?php if($toUnit == 'firkins') { echo " selected"; } ?>>Firkins</option>
